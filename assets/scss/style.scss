@@ -1,11 +1,15 @@
-@import "./partials/resets";
+@import "./partials/_resets.scss";
+@import "./partials/_colori.scss";
+@import "./partials/_keyframes.scss";
+@import "./partials/_font.scss";
 
 nav {
+  font-family: $font-nav;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
-  color: #fff;
+  background-color: $bg-purple-color;
+  color: $testo-color;
   height: 70px;
   padding: 0 50px;
 
@@ -21,14 +25,12 @@ nav {
     justify-content: space-between;
     align-items: center;
     list-style: none;
-    margin: 0;
-    padding: 0;
 
     li {
       margin: 0 20px;
 
       a {
-        color: #f4f4f4;
+        color: $testo-color;
         text-decoration: none;
         font-size: 18px;
         text-transform: uppercase;
@@ -39,23 +41,37 @@ nav {
       &:hover {
         a {
           text-decoration: underline;
+          cursor: pointer;
         }
       }
     }
   }
 }
 .hero {
-  background-color: purple;
+  background-color: $bg-purple-color;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 50px;
+  position: relative;
+  height: 400px;
+
+  .headline,
+  .hero_image {
+    animation: fade-in 2.5s ease-in-out;
+  }
 
   .headline {
+    font-family: $font-family-tot;
     width: 50%;
-    background-color: #f2f2f2;
+    background-color: white;
     text-align: center;
-    padding: 60px 50px;
+    padding: 100px 50px;
+    position: absolute;
+    top: 0;
+    right: 50%;
+    bottom: 0;
+    left: 0;
 
     h1 {
       font-size: 36px;
@@ -81,36 +97,39 @@ nav {
         cursor: pointer;
         transition: all 0.3s ease;
 
-        &.button-primary {
-          background-color: #0e6cff;
-          color: #f4f4f4;
-          border: 2px solid #093781;
+        &.button-1 {
+          background-color: $bt-blu-color;
+          color: $testo-color;
+          border: 3px solid darken($bt-blu-color, 30%);
 
           &:hover {
             background-color: white;
-            color: #333;
+            color: darken($bt-blu-color, 30%);
+            cursor: pointer;
           }
         }
 
-        &.button-secondary {
-          background-color: #ff8700;
-          color: #f4f4f4;
-          border: 2px solid #7e4401;
+        &.button-2 {
+          background-color: $bt-orange-color;
+          color: $testo-color;
+          border: 3px solid darken($bt-orange-color, 30%);
 
           &:hover {
             background-color: white;
-            color: #333;
+            color: darken($bt-orange-color, 30%);
+            cursor: pointer;
           }
         }
 
-        &.button-tertiary {
-          background-color: #4caf50;
-          color: #f4f4f4;
-          border: 2px solid #275b29;
+        &.button-3 {
+          background-color: $bt-green-color;
+          color: $testo-color;
+          border: 3px solid darken($bt-green-color, 30%);
 
           &:hover {
             background-color: white;
-            color: #333;
+            color: darken($bt-green-color, 30%);
+            cursor: pointer;
           }
         }
       }
@@ -118,26 +137,43 @@ nav {
   }
   &_image {
     width: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 50%;
+    overflow: hidden;
     img {
       width: 100%;
+      object-fit: cover;
     }
   }
 }
 
-.grid {
+.griglia {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
   background-color: white;
-  padding: 50px;
 
-  &__item {
-    width: calc(25% - 20px);
-    margin: 10px;
+  &_elem {
+    width: calc(20% - 20px);
+    margin-block: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 14px;
     overflow: hidden;
+    transition: all 0.5s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 14px 18px rgba(0, 0, 0, 0.6);
+      cursor: pointer;
+    }
 
     img {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
     }
   }
 }
